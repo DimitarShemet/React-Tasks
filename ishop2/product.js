@@ -22,9 +22,10 @@ let Product=React.createClass({
      this.props.cbSelected(this.props.code)
      console.log(this.props.code)
     },
-    clickReset:function(){
+    clickReset:function(EO){
      console.log(this.props.code)
       this.props.cbDeleted(this.props.code)
+      EO.stopPropagation()
     },
     render:function(){  
     
