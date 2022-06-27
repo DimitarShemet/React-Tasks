@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+     
+    </div> 
+      
+<script src="https://unpkg.com/react@15/dist/react.js"></script> 
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+    
+<script src="MyComponent.js"></script>
+<link rel="stylesheet" type="text/css" href="MyComponent.css" />
+    <script>
+
+ 
+  let shopName="Lamoda"
+  let  data=["Название продукта","Цена","Фото","Остаток"]
+  let productList=[ 
+         {productName:"Футболки",price:10,photo:React.DOM.img({src:"shirt.jpg"}),balance:5,code:10},
+         {productName:"Джинсы",price:8,photo:React.DOM.img({src:"jeans.jpg"}),balance:3,code:11}, 
+         {productName:"Куртки",price:5,photo:React.DOM.img({src:"jacket.jpg"}),balance:2,code:12}
+        ]
+    ReactDOM.render(
+    React.createElement(MyComponent,{shop:shopName,dataItems:data ,list:productList}),
+    document.getElementById('container')
+    )
+
+        
+    </script>
+</body>
+</html>
