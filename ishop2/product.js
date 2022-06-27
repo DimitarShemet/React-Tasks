@@ -12,22 +12,29 @@ let Product=React.createClass({
         price:React.PropTypes.number.isRequired,
         balance:React.PropTypes.number.isRequired,
         code:React.PropTypes.number.isRequired,
-        photo:React.PropTypes.shape.isRequired,
        })
 
       ),
-      
+
+
     },
-    
+    productClicked:function(EO){
+     this.props.cbSelected(this.props.code)
+     console.log(this.props.code)
+    },
+    clickReset:function(){
+     console.log(this.props.code)
+      this.props.cbDeleted(this.props.code)
+    },
     render:function(){  
     
      
-     return React.DOM.tr(null, 
+     return React.DOM.tr({onClick:this.productClicked}, 
       React.DOM.td({}, this.props.productName),
       React.DOM.td({}, this.props.price),
       React.DOM.td({}, this.props.url),
       React.DOM.td({}, this.props.balance),
-      React.DOM.td({}, this.props.resetInput),
+      React.DOM.td({}, React.DOM.input({type:"reset",value:"Delete",onClick:this.clickReset})),
      
     );
     },

@@ -24,9 +24,9 @@
   let shopName="Lamoda"
   let  data=["Name","Price","URL","Quanity","Control"]
   let productList=[ 
-         {productName:"Футболки",price:10,url:"url",balance:5,code:10,reset:React.DOM.input({type:"reset",value:"Delete"})},
-         {productName:"Джинсы",price:8,url:"url",balance:3,code:11,reset:React.DOM.input({type:"reset",value:"Delete"})}, 
-         {productName:"Куртки",price:5,url:"url",balance:2,code:12,reset:React.DOM.input({type:"reset",value:"Delete"})}
+         {productName:"Футболки",price:10,url:"url",balance:5,code:10,},
+         {productName:"Джинсы",price:8,url:"url",balance:3,code:11,}, 
+         {productName:"Куртки",price:5,url:"url",balance:2,code:12,}
         ]
     ReactDOM.render(
     React.createElement(Shop,{shop:shopName,dataItems:data ,list:productList}),
