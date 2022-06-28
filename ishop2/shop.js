@@ -1,10 +1,27 @@
 ﻿
 let Shop=React.createClass({
+  propTypes:{
+    shop: React.PropTypes.string,
+    dataItems:React.PropTypes.arrayOf(
+      React.PropTypes.string.isRequired
+    ),
+    list:React.PropTypes.arrayOf(
+     React.PropTypes.shape({
+      productName:React.PropTypes.string.isRequired,
+      price:React.PropTypes.number.isRequired,
+      balance:React.PropTypes.number.isRequired,
+      code:React.PropTypes.number.isRequired,
+     })
+
+    ),
+
+
+  },
 
   getInitialState: function(){
     return  { 
       
-    newSelectedItem:1,
+    newSelectedItem:"",
     itemList:this.props.list
    } 
 
@@ -39,7 +56,8 @@ React.DOM.caption({className:"MyComponent__table__heading"},shop),
 React.DOM.tbody( {className:null},
   React.DOM.tr(null,dataArray),
  this.state.itemList.map(element=>React.createElement(Product,{key:element.code,code:element.code,productName:element.productName,
-  price:element.price,url:element.url,balance:element.balance, selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
+  price:element.price,url:element.url,balance:element.balance,
+   selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
 )
 )  
 },

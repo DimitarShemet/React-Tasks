@@ -1,36 +1,31 @@
 
 let Product=React.createClass({
-
+     
     displayName:"Product",
-    propTypes:{
-      dataItems:React.PropTypes.arrayOf(
-        React.PropTypes.string.isRequired
-      ),
-      list:React.PropTypes.arrayOf(
-       React.PropTypes.shape({
-        productName:React.PropTypes.string.isRequired,
-        price:React.PropTypes.number.isRequired,
-        balance:React.PropTypes.number.isRequired,
-        code:React.PropTypes.number.isRequired,
-       })
-
-      ),
-
-
-    },
+  
     productClicked:function(EO){
      this.props.cbSelected(this.props.code)
+     console.log(this.props.selectedItem)
      console.log(this.props.code)
-    },
+     
+   
+  },
     clickReset:function(EO){
-     console.log(this.props.code)
-      this.props.cbDeleted(this.props.code)
       EO.stopPropagation()
+      var question =confirm('Удалить строку?');
+      if(question===true)
+        this.props.cbDeleted(this.props.code)
+      else{
+        alert("Строка не будет удалена")
+        return
+      }
+     
+     
     },
     render:function(){  
     
      
-     return React.DOM.tr({onClick:this.productClicked}, 
+     return React.DOM.tr({onClick:this.productClicked, style:{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}, 
       React.DOM.td({}, this.props.productName),
       React.DOM.td({}, this.props.price),
       React.DOM.td({}, this.props.url),
