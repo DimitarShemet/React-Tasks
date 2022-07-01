@@ -1,17 +1,16 @@
 
 import React from 'react'
-let Product=React.createClass({
+class Product extends React.Component{
      
-    displayName:"Product",
   
-    productClicked:function(EO){
+    productClicked(EO){
      this.props.cbSelected(this.props.code)
      console.log(this.props.selectedItem)
      console.log(this.props.code)
      
    
-  },
-    clickReset:function(EO){
+  }
+    clickReset(EO){
       EO.stopPropagation()
       var question =confirm('Удалить строку?');
       if(question===true)
@@ -22,8 +21,8 @@ let Product=React.createClass({
       }
      
      
-    },
-    render:function(){  
+    }
+    render(){  
     
      
      return React.DOM.tr({onClick:this.productClicked, style:{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}, 
@@ -34,9 +33,9 @@ let Product=React.createClass({
       React.DOM.td({}, React.DOM.input({type:"reset",value:"Delete",onClick:this.clickReset})),
      
     );
-    },
+    }
     
-    })
+    }
     
     export default Product
     

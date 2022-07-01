@@ -2,8 +2,9 @@
 import React from "react"
 import './shop.css'
 import  Product from './product'
-let Shop=React.createClass({
-  propTypes:{
+class Shop extends React.Component{
+
+  static propTypes = {
     shop: React.PropTypes.string,
     dataItems:React.PropTypes.arrayOf(
       React.PropTypes.string.isRequired
@@ -18,31 +19,28 @@ let Shop=React.createClass({
 
     ),
 
+  };
 
-  },
-
-  getInitialState: function(){
-    return  { 
-      
-    newSelectedItem:"",
-    itemList:this.props.list
-   } 
-
- },
- cbSelectedItem:function(codeSelectedItem){
+ state = {
+    selectedAnswerCode: null,
+    freeanswertext:this.props.deffreeanswertext,
+    workMode:this.props.startWorkMode,
+  }
+  // freeAnswerTextChanged = (fat) => { 
+ cbSelectedItem =(codeSelectedItem)=>{
   this.setState({newSelectedItem:codeSelectedItem})
- },
+ }
 
-deleteItem:function(itemСode){
+deleteItem=(itemСode)=>{
 let newItemList=this.state.itemList.filter(element=>element.code!==itemСode)
 this.setState({itemList:newItemList})
 console.log(newItemList)
-},
+}
 
 
 
 
-render:function(){
+render(){
 let shop=this.props.shop
 
 console.log(this.state.newSelectedItem)
@@ -63,9 +61,9 @@ React.DOM.tbody( {className:null},
    selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
 )
 )  
-},
+}
 
-})
+}
 
 export default Shop
 
