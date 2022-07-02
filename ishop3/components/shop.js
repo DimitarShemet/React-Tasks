@@ -22,9 +22,8 @@ class Shop extends React.Component{
   };
 
  state = {
-    selectedAnswerCode: null,
-    freeanswertext:this.props.deffreeanswertext,
-    workMode:this.props.startWorkMode,
+  newSelectedItem:"",
+  itemList:this.props.list
   }
   // freeAnswerTextChanged = (fat) => { 
  cbSelectedItem =(codeSelectedItem)=>{

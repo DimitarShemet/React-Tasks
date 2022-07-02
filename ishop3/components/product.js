@@ -2,15 +2,15 @@
 import React from 'react'
 class Product extends React.Component{
      
-  
-    productClicked(EO){
+  // freeAnswerTextChanged = (fat) => { 
+    productClicked=(EO)=>{
      this.props.cbSelected(this.props.code)
      console.log(this.props.selectedItem)
      console.log(this.props.code)
      
    
   }
-    clickReset(EO){
+    clickReset=(EO)=>{
       EO.stopPropagation()
       var question =confirm('Удалить строку?');
       if(question===true)
@@ -38,9 +38,6 @@ class Product extends React.Component{
     }
     
     export default Product
-    
-    
-    
     
     
     
