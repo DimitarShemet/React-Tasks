@@ -9602,31 +9602,29 @@ module.exports = getHostComponentFromComposite;
 
 /***/ }),
 /* 83 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_shop_js__ = __webpack_require__(188);
 
 
+var _react = __webpack_require__(31);
 
+var _react2 = _interopRequireDefault(_react);
 
-let shopName="Lamoda"
-let  data=["Name","Price","URL","Quanity","Control"]
-let productList=[ 
-       {productName:"Футболки",price:10,url:"url",balance:5,code:10,},
-       {productName:"Джинсы",price:8,url:"url",balance:3,code:11,}, 
-       {productName:"Куртки",price:5,url:"url",balance:2,code:12,}
-      ]
-  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_shop_js__["a" /* default */],{shop:shopName,dataItems:data ,list:productList}),
-  document.getElementById('container')
-  )
+var _reactDom = __webpack_require__(102);
 
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _shop = __webpack_require__(188);
+
+var _shop2 = _interopRequireDefault(_shop);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var shopName = "Lamoda";
+var data = ["Name", "Price", "URL", "Quanity", "Control"];
+var productList = [{ productName: "Футболки", price: 10, url: "url", balance: 5, code: 10 }, { productName: "Джинсы", price: 8, url: "url", balance: 3, code: 11 }, { productName: "Куртки", price: 5, url: "url", balance: 2, code: 12 }];
+_reactDom2.default.render(_react2.default.createElement(_shop2.default, { shop: shopName, dataItems: data, list: productList }), document.getElementById('container'));
 
 /***/ }),
 /* 84 */
@@ -22564,103 +22562,102 @@ module.exports = ReactDOMInvalidARIAHook;
 
 /***/ }),
 /* 188 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shop_css__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shop_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shop_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__product__ = __webpack_require__(190);
-﻿
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-let Shop=__WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
-  propTypes:{
-    shop: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
-    dataItems:__WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.arrayOf(
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired
-    ),
-    list:__WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.arrayOf(
-     __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.shape({
-      productName:__WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      price:__WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number.isRequired,
-      balance:__WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number.isRequired,
-      code:__WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number.isRequired,
-     })
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    ),
+var _react = __webpack_require__(31);
 
+var _react2 = _interopRequireDefault(_react);
 
-  },
+__webpack_require__(189);
 
-  getInitialState: function(){
-    return  { 
-      
-    newSelectedItem:"",
-    itemList:this.props.list
-   } 
+var _product = __webpack_require__(190);
 
- },
- cbSelectedItem:function(codeSelectedItem){
-  this.setState({newSelectedItem:codeSelectedItem})
- },
+var _product2 = _interopRequireDefault(_product);
 
-deleteItem:function(itemСode){
-let newItemList=this.state.itemList.filter(element=>element.code!==itemСode)
-this.setState({itemList:newItemList})
-console.log(newItemList)
-},
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-render:function(){
-let shop=this.props.shop
+var Shop = function (_React$Component) {
+  _inherits(Shop, _React$Component);
 
-console.log(this.state.newSelectedItem)
-console.log(this.state.itemList)
-  let data=this.props.dataItems
-var dataArray=[]
-data.forEach((element,index) => {
-  let td=__WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({key:index},element)
-  dataArray.push(td)
-}
-)
-return  __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.table( {className:"MyComponent__table"}, 
-__WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.caption({className:"MyComponent__table__heading"},shop),
-__WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tbody( {className:null},
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tr(null,dataArray),
- this.state.itemList.map(element=>__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__product__["a" /* default */],{key:element.code,code:element.code,productName:element.productName,
-  price:element.price,url:element.url,balance:element.balance,
-   selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
-)
-)  
-},
+  function Shop() {
+    var _ref;
 
-})
+    var _temp, _this, _ret;
 
-/* harmony default export */ __webpack_exports__["a"] = (Shop);
+    _classCallCheck(this, Shop);
 
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Shop.__proto__ || Object.getPrototypeOf(Shop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      newSelectedItem: "",
+      itemList: _this.props.list
+      // freeAnswerTextChanged = (fat) => { 
+    }, _this.cbSelectedItem = function (codeSelectedItem) {
+      _this.setState({ newSelectedItem: codeSelectedItem });
+    }, _this.deleteItem = function (itemСode) {
+      var newItemList = _this.state.itemList.filter(function (element) {
+        return element.code !== itemСode;
+      });
+      _this.setState({ itemList: newItemList });
+      console.log(newItemList);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
 
+  _createClass(Shop, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
+      var shop = this.props.shop;
 
+      console.log(this.state.newSelectedItem);
+      console.log(this.state.itemList);
+      var data = this.props.dataItems;
+      var dataArray = [];
+      data.forEach(function (element, index) {
+        var td = _react2.default.DOM.td({ key: index }, element);
+        dataArray.push(td);
+      });
+      return _react2.default.DOM.table({ className: "MyComponent__table" }, _react2.default.DOM.caption({ className: "MyComponent__table__heading" }, shop), _react2.default.DOM.tbody({ className: null }, _react2.default.DOM.tr(null, dataArray), this.state.itemList.map(function (element) {
+        return _react2.default.createElement(_product2.default, { key: element.code, code: element.code, productName: element.productName,
+          price: element.price, url: element.url, balance: element.balance,
+          selectedItem: _this2.state.newSelectedItem, cbSelected: _this2.cbSelectedItem, cbDeleted: _this2.deleteItem });
+      })));
+    }
+  }]);
 
+  return Shop;
+}(_react2.default.Component);
 
+Shop.propTypes = {
+  shop: _react2.default.PropTypes.string,
+  dataItems: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.string.isRequired),
+  list: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.shape({
+    productName: _react2.default.PropTypes.string.isRequired,
+    price: _react2.default.PropTypes.number.isRequired,
+    balance: _react2.default.PropTypes.number.isRequired,
+    code: _react2.default.PropTypes.number.isRequired
+  }))
 
-
-
-
-
-
-
-
-
-
-
-
+};
+exports.default = Shop;
 
 /***/ }),
 /* 189 */
@@ -22670,63 +22667,72 @@ __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tbody( {className:null},
 
 /***/ }),
 /* 190 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
 
-let Product=__WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
-     
-    displayName:"Product",
-  
-    productClicked:function(EO){
-     this.props.cbSelected(this.props.code)
-     console.log(this.props.selectedItem)
-     console.log(this.props.code)
-     
-   
-  },
-    clickReset:function(EO){
-      EO.stopPropagation()
-      var question =confirm('Удалить строку?');
-      if(question===true)
-        this.props.cbDeleted(this.props.code)
-      else{
-        alert("Строка не будет удалена")
-        return
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(31);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Product = function (_React$Component) {
+  _inherits(Product, _React$Component);
+
+  function Product() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Product);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref, [this].concat(args))), _this), _this.productClicked = function (EO) {
+      _this.props.cbSelected(_this.props.code);
+      console.log(_this.props.selectedItem);
+      console.log(_this.props.code);
+    }, _this.clickReset = function (EO) {
+      EO.stopPropagation();
+      var question = confirm('Удалить строку?');
+      if (question === true) _this.props.cbDeleted(_this.props.code);else {
+        alert("Строка не будет удалена");
+        return;
       }
-     
-     
-    },
-    render:function(){  
-    
-     
-     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tr({onClick:this.productClicked, style:{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}, 
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({}, this.props.productName),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({}, this.props.price),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({}, this.props.url),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({}, this.props.balance),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({}, __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.input({type:"reset",value:"Delete",onClick:this.clickReset})),
-     
-    );
-    },
-    
-    })
-    
-    /* harmony default export */ __webpack_exports__["a"] = (Product);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  // freeAnswerTextChanged = (fat) => { 
+
+
+  _createClass(Product, [{
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.DOM.tr({ onClick: this.productClicked, style: { backgroundColor: this.props.selectedItem === this.props.code ? 'orange' : 'white' } }, _react2.default.DOM.td({}, this.props.productName), _react2.default.DOM.td({}, this.props.price), _react2.default.DOM.td({}, this.props.url), _react2.default.DOM.td({}, this.props.balance), _react2.default.DOM.td({}, _react2.default.DOM.input({ type: "reset", value: "Delete", onClick: this.clickReset })));
+    }
+  }]);
+
+  return Product;
+}(_react2.default.Component);
+
+exports.default = Product;
 
 /***/ })
 /******/ ]);
