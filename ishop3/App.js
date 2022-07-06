@@ -8,4 +8,5 @@ let  data=["Name","Price","URL","Quanity","Control"]
   ReactDOM.render(
   React.createElement(Shop,{shop:shopName,dataItems:data ,list:productList}),
   document.getElementById('container')
+  
   )

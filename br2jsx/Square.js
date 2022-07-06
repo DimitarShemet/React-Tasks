@@ -6,12 +6,15 @@ class Square extends React.Component {
       
     };
 render(){
-
-
+  let rightArr=this.props.text.replace(/br \//ig, "br").replace(/br\//ig,"br").split("<br>")
+  rightArr.splice(1,0,<br key={Math.random()}></br>)
+  rightArr.splice(3,0,<br key={Math.random()}></br>)
+  rightArr.splice(5,0,<br key={Math.random()}></br>)
+ 
     return (
        
     <div className='square'>
-      {this.props.arr}
+      {rightArr}
     </div>
      
       );
