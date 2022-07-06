@@ -1,7 +1,6 @@
 ﻿
 import React from "react"
 import './shop.css'
-import ReactDOM from 'react-dom';
 import  Product from './product'
 class Shop extends React.Component{
 
