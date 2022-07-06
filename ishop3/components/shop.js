@@ -1,6 +1,7 @@
 ﻿
 import React from "react"
 import './shop.css'
+import ReactDOM from 'react-dom';
 import  Product from './product'
 class Shop extends React.Component{
 
@@ -25,7 +26,7 @@ class Shop extends React.Component{
   newSelectedItem:"",
   itemList:this.props.list
   }
-  // freeAnswerTextChanged = (fat) => { 
+  
  cbSelectedItem =(codeSelectedItem)=>{
   this.setState({newSelectedItem:codeSelectedItem})
  }

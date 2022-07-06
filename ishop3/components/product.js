@@ -1,5 +1,6 @@
 
 import React from 'react'
+import ReactDOM from 'react-dom';
 class Product extends React.Component{
      
   // freeAnswerTextChanged = (fat) => { 
@@ -30,7 +31,7 @@ class Product extends React.Component{
       React.DOM.td({}, this.props.price),
       React.DOM.td({}, this.props.url),
       React.DOM.td({}, this.props.balance),
-      React.DOM.td({}, React.DOM.input({type:"reset",value:"Delete",onClick:this.clickReset})),
+      React.DOM.td({}, React.DOM.input({type:"button",value:"Edit",onClick:this.clickReset}),React.DOM.input({type:"reset",value:"Delete",onClick:this.clickReset})),
      
     );
     }

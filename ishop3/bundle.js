@@ -22725,7 +22725,7 @@ var Product = function (_React$Component) {
     key: 'render',
     value: function render() {
 
-      return _react2.default.DOM.tr({ onClick: this.productClicked, style: { backgroundColor: this.props.selectedItem === this.props.code ? 'orange' : 'white' } }, _react2.default.DOM.td({}, this.props.productName), _react2.default.DOM.td({}, this.props.price), _react2.default.DOM.td({}, this.props.url), _react2.default.DOM.td({}, this.props.balance), _react2.default.DOM.td({}, _react2.default.DOM.input({ type: "reset", value: "Delete", onClick: this.clickReset })));
+      return _react2.default.DOM.tr({ onClick: this.productClicked, style: { backgroundColor: this.props.selectedItem === this.props.code ? 'orange' : 'white' } }, _react2.default.DOM.td({}, this.props.productName), _react2.default.DOM.td({}, this.props.price), _react2.default.DOM.td({}, this.props.url), _react2.default.DOM.td({}, this.props.balance), _react2.default.DOM.td({}, _react2.default.DOM.input({ type: "button", value: "Edit", onClick: this.clickReset }, { type: "reset", value: "Delete", onClick: this.clickReset })));
     }
   }]);
 
