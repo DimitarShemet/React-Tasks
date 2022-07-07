@@ -51,15 +51,17 @@ data.forEach((element,index) => {
   dataArray.push(td)
 }
 )
-return  React.DOM.table( {className:"MyComponent__table"}, 
-React.DOM.caption({className:"MyComponent__table__heading"},shop),
-React.DOM.tbody( {className:null},
-  React.DOM.tr(null,dataArray),
- this.state.itemList.map(element=>React.createElement(Product,{key:element.code,code:element.code,productName:element.productName,
-  price:element.price,url:element.url,balance:element.balance,
-   selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
-)
-)  
+  return  <table></table>
+  // React.DOM.table( {className:"MyComponent__table"}, 
+// React.DOM.caption({className:"MyComponent__table__heading"},shop),
+// React.DOM.tbody( {className:null},
+//   React.DOM.tr(null,dataArray),
+//  this.state.itemList.map(element=>React.createElement(Product,{key:element.code,code:element.code,productName:element.productName,
+//   price:element.price,url:element.url,balance:element.balance,
+//    selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
+// )
+// ) 
+ 
 }
 
 }
