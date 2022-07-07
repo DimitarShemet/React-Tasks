@@ -51,15 +51,26 @@ data.forEach((element,index) => {
   dataArray.push(td)
 }
 )
-return  React.DOM.table( {className:"MyComponent__table"}, 
-React.DOM.caption({className:"MyComponent__table__heading"},shop),
-React.DOM.tbody( {className:null},
-  React.DOM.tr(null,dataArray),
- this.state.itemList.map(element=>React.createElement(Product,{key:element.code,code:element.code,productName:element.productName,
-  price:element.price,url:element.url,balance:element.balance,
-   selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
-)
-)  
+ return <table className="MyComponent__table">
+  <caption className="MyComponent__table__heading"></caption>
+    <tbody>
+      <tr>{dataArray}</tr>
+      {this.state.itemList.map(
+        elem => <Product  key={elem.code}  code={elem.code} productName={elem.productName} price={elem.price} url={elem.url} balance={elem.balance} selectedItem={this.state.newSelectedItem} cbSelected={this.cbSelectedItem} cbDeleted={this.deleteItem} />
+      )}
+      
+    </tbody>
+  
+ </table>
+ // React.DOM.table( {className:"MyComponent__table"}, 
+// React.DOM.caption({className:"MyComponent__table__heading"},shop),
+// React.DOM.tbody( {className:null},
+//   React.DOM.tr(null,dataArray),
+//  this.state.itemList.map(element=>React.createElement(Product,{key:element.code,code:element.code,productName:element.productName,
+//   price:element.price,url:element.url,balance:element.balance,
+//    selectedItem:this.state.newSelectedItem,cbSelected:this.cbSelectedItem,cbDeleted:this.deleteItem}))
+// )
+// )  
 }
 
 }

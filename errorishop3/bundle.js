@@ -22626,8 +22626,6 @@ var Shop = function (_React$Component) {
   _createClass(Shop, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var shop = this.props.shop;
 
       console.log(this.state.newSelectedItem);
@@ -22638,11 +22636,11 @@ var Shop = function (_React$Component) {
         var td = _react2.default.DOM.td({ key: index }, element);
         dataArray.push(td);
       });
-      return _react2.default.DOM.table({ className: "MyComponent__table" }, _react2.default.DOM.caption({ className: "MyComponent__table__heading" }, shop), _react2.default.DOM.tbody({ className: null }, _react2.default.DOM.tr(null, dataArray), this.state.itemList.map(function (element) {
-        return _react2.default.createElement(_product2.default, { key: element.code, code: element.code, productName: element.productName,
-          price: element.price, url: element.url, balance: element.balance,
-          selectedItem: _this2.state.newSelectedItem, cbSelected: _this2.cbSelectedItem, cbDeleted: _this2.deleteItem });
-      })));
+      return _react2.default.createElement(
+        'table',
+        null,
+        _react2.default.createElement('div', null)
+      );
     }
   }]);
 
