@@ -13,9 +13,7 @@ render(){
   
   
   
-  // rightArr.splice(1,0,<br key={Math.random()}></br>)
-  // rightArr.splice(3,0,<br key={Math.random()}></br>)
-  // rightArr.splice(5,0,<br key={Math.random()}></br>)
+ 
  
     return (
        
