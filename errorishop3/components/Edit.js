@@ -1,7 +1,6 @@
 
 import React from 'react'
-import ReactDOM from 'react-dom';
-class Product extends React.Component{
+class Edit extends React.Component{
      
   
     productClicked=(EO)=>{
@@ -46,7 +45,7 @@ class Product extends React.Component{
     
     }
     
-    export default Product
+    export default Edit
     
     
     

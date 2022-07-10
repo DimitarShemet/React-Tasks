@@ -6,12 +6,15 @@ class Square extends React.Component {
       
     };
 render(){
+  let clearArr=[]
   let rightArr=this.props.text.replace(/br \//ig, "br").replace(/br\//ig,"br").split("<br>")
-  rightArr.forEach((elem,index)=>{
-    rightArr.splice(1+(index)*2,0,<br key={index}></br>)
-
-  })
-  rightArr.pop()
+for ( let i=0; i<rightArr.length; i++){
+ clearArr.push(rightArr[i])
+ if(i<rightArr.length-1){
+  clearArr.push(<br></br>)
+  }
+ 
+}
 
   
   
@@ -19,7 +22,7 @@ render(){
     return (
        
     <div className='square'>
-      {rightArr}
+      {clearArr}
     </div>
      
       );
