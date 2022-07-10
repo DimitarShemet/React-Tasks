@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 
 
- let  withRainbowFrame = (colors) => (Comp) => (props) => {
+  let  withRainbowFrame = (colors) => (Comp) => (props) => {
  
   function callBack(accumulator, elem){
     return(
-     <div style={{border:"solid 2px "+elem,padding:"10px"}}>
+     <div style={{border:"solid 2px "+elem,padding:"10px",textAlign:"center"}}>
       {accumulator}
      </div>
     )   
@@ -14,8 +14,9 @@ import React from 'react';
 
  let result =colors.reduce(callBack,<Comp {...props}></Comp>)
 return (
-   
+   <Fragment>
    {result}
+   </Fragment>
  
   );
 };
