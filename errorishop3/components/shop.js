@@ -1,9 +1,10 @@
 ﻿
-import React from "react"
+import React from 'react'
 import './shop.css'
 import  Product from './product'
+import  Card from "./Card.js"
+import  Edit from "./Edit.js"
 class Shop extends React.Component{
-
   static propTypes = {
     shop: React.PropTypes.string,
     dataItems:React.PropTypes.arrayOf(
@@ -23,12 +24,28 @@ class Shop extends React.Component{
 
  state = {
   newSelectedItem:"",
-  itemList:this.props.list
+  itemList:this.props.list,
+  productName:"",
+  price:"",
+  url:"",
+  balance:""
   }
   
- cbSelectedItem =(codeSelectedItem)=>{
+ cbSelectedItem =(codeSelectedItem,productName,price)=>{
   this.setState({newSelectedItem:codeSelectedItem})
+  this.setState({productName:productName})
+  this.setState({price:price})
  }
+ cbEditItem=(code,productName,price,url,balance)=>{
+  this.setState({newSelectedItem:codeSelectedItem})
+  this.setState({productName:productName})
+  this.setState({price:price})
+  this.setState({url:url})
+  this.setState({balance:ba})
+
+
+ }
+
 
 deleteItem=(itemСode)=>{
 let newItemList=this.state.itemList.filter(element=>element.code!==itemСode)
@@ -41,9 +58,10 @@ console.log(newItemList)
 
 render(){
 let shop=this.props.shop
-
+console.log(this.state.productName)
 console.log(this.state.newSelectedItem)
 console.log(this.state.itemList)
+console.log(this.state.price)
   let data=this.props.dataItems
 var dataArray=[]
 data.forEach((element,index) => {
@@ -51,7 +69,8 @@ data.forEach((element,index) => {
   dataArray.push(td)
 }
 )
- return <table className="MyComponent__table">
+ return <div>
+ <table className="MyComponent__table">
   <caption className="MyComponent__table__heading"></caption>
     <tbody>
       <tr>{dataArray}</tr>
@@ -61,6 +80,10 @@ data.forEach((element,index) => {
       }
     </tbody>
  </table> 
+ <Card product={this.state.productName} price={this.state.price} ></Card>
+ <Edit >
+ </Edit>
+ </div>
  
 
 

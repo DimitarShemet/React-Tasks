@@ -1,16 +1,20 @@
 
 import React from 'react'
-import ReactDOM from 'react-dom';
 class Product extends React.Component{
      
   
     productClicked=(EO)=>{
-     this.props.cbSelected(this.props.code)
-     console.log(this.props.selectedItem)
-     console.log(this.props.code)
-     
-   
+     this.props.cbSelected(this.props.code, this.props.productName,this.props.price)
+     return{
+      
+     }
   }
+  EditClicked=(EO)=>{
+    this.props.cbSelected(this.props.code, this.props.productName,this.props.price,this.props.url,this.props.balance)
+    return{
+     
+    }
+ }
     clickReset=(EO)=>{
       EO.stopPropagation()
       var question =confirm('Удалить строку?');
@@ -29,19 +33,10 @@ class Product extends React.Component{
       <td>{this.props.price}</td>
       <td>{this.props.url}</td>
       <td>{this.props.balance}</td>
-      <td><input type={"button"} value={"Edit"} onClick={this.productClicked} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset}></input></td>
+      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset}></input></td>
     </tr>
-   
-    
-     
-    //  return React.DOM.tr({onClick:this.productClicked, style:{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}, 
-    //   React.DOM.td({}, this.props.productName),
-    //   React.DOM.td({}, this.props.price),
-    //   React.DOM.td({}, this.props.url),
-    //   React.DOM.td({}, this.props.balance),
-    //   React.DOM.td({}, React.DOM.input({type:"button",value:"Edit",onClick:this.clickReset}),React.DOM.input({type:"reset",value:"Delete",onClick:this.clickReset})),
-     
-    // );
+  
+
     }
     
     }
