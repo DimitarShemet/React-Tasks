@@ -28,22 +28,24 @@ class Shop extends React.Component{
   productName:"",
   price:"",
   url:"",
-  balance:""
+  balance:"",
+  workMode:"",
+  code: ""
   }
   
- cbSelectedItem =(codeSelectedItem,productName,price)=>{
+ cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{
   this.setState({newSelectedItem:codeSelectedItem})
   this.setState({productName:productName})
   this.setState({price:price})
+  this.setState({workMode:workMode})
  }
- cbEditItem=(code,productName,price,url,balance)=>{
-  this.setState({newSelectedItem:codeSelectedItem})
+ cbEditItem=(code,productName,price,url,balance,workMode)=>{
+  this.setState({code:code})
   this.setState({productName:productName})
   this.setState({price:price})
   this.setState({url:url})
-  this.setState({balance:ba})
-
-
+  this.setState({balance:balance})
+  this.setState({workMode:workMode})
  }
 
 
@@ -75,12 +77,13 @@ data.forEach((element,index) => {
     <tbody>
       <tr>{dataArray}</tr>
       {this.state.itemList.map(
-        elem => <Product  key={elem.code}  code={elem.code} productName={elem.productName} price={elem.price} url={elem.url} balance={elem.balance} selectedItem={this.state.newSelectedItem} cbSelected={this.cbSelectedItem} cbDeleted={this.deleteItem} />
+        elem => <Product  key={elem.code}  code={elem.code} productName={elem.productName} price={elem.price} url={elem.url} balance={elem.balance}
+         cbEdit={this.cbEditItem} selectedItem={this.state.newSelectedItem} cbSelected={this.cbSelectedItem}  cbDeleted={this.deleteItem} workMode={this.state.workMode} />
       )
       }
     </tbody>
  </table> 
- <Card product={this.state.productName} price={this.state.price} ></Card>
+ <Card id={this.state.code} url={this.state.url} product={this.state.productName} price={this.state.price} workMode={this.state.workMode} balance={this.state.balance}></Card>
  <Edit >
  </Edit>
  </div>

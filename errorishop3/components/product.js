@@ -4,13 +4,14 @@ class Product extends React.Component{
      
   
     productClicked=(EO)=>{
-     this.props.cbSelected(this.props.code, this.props.productName,this.props.price)
+     this.props.cbSelected(this.props.code, this.props.productName,this.props.price,1)
      return{
       
      }
   }
   EditClicked=(EO)=>{
-    this.props.cbSelected(this.props.code, this.props.productName,this.props.price,this.props.url,this.props.balance)
+    EO.stopPropagation()
+    this.props.cbEdit(this.props.code, this.props.productName,this.props.price,this.props.url,this.props.balance,2)
     return{
      
     }
