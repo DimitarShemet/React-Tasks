@@ -83,7 +83,7 @@ data.forEach((element,index) => {
       }
     </tbody>
  </table> 
- <Card id={this.state.code} url={this.state.url} product={this.state.productName} price={this.state.price} workMode={this.state.workMode} balance={this.state.balance}></Card>
+ <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} price={this.state.price} workMode={this.state.workMode} balance={this.state.balance}></Card>
  <Edit >
  </Edit>
  </div>

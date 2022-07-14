@@ -4,6 +4,7 @@ class Product extends React.Component{
      
   
     productClicked=(EO)=>{
+      EO.stopPropagation()
      this.props.cbSelected(this.props.code, this.props.productName,this.props.price,1)
      return{
       
@@ -34,7 +35,7 @@ class Product extends React.Component{
       <td>{this.props.price}</td>
       <td>{this.props.url}</td>
       <td>{this.props.balance}</td>
-      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset}></input></td>
+      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked}  ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset}></input></td>
     </tr>
   
 

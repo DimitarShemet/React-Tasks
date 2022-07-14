@@ -8,17 +8,72 @@ class Card extends React.Component{
     product:this.props.product,
     price:this.props.price,
     url:this.props.url,
-    balance: this.props.balance
+    balance: this.props.balance,
+    productErr: "",
+    priceErr: "",
+    urlErr: "",
+    balanceErr: ""
     }
-    
- changeName =(codeSelectedItem,productName,price,workMode)=>{
-  this.setState({newSelectedItem:codeSelectedItem})
-  this.setState({productName:productName})
-  this.setState({price:price})
-  this.setState({workMode:workMode})
+
+ changeName =(EO)=>{
+  this.nameErr(EO.target.value)
+  this.setState({product:EO.target.value})
  }
+
+ nameErr= (err) => {
+  if(err===""){
+  this.setState({productErr:"Введите название продукта "})
+  console.log("Ошибка")
+  }
+  else
+  this.setState({productErr:""})
+  
+}
+ changePrice =(EO)=>{
+  this.priceErr(EO.target.value)
+  this.setState({price:EO.target.value})
+ }
+ 
+ priceErr= (err) => {
+  if(err===""){
+    this.setState({priceErr:"Введите цену продукта "})
+    console.log("Ошибка")
+    }
+    else
+    this.setState({priceErr:""})
+}
+
+ changeUrl =(EO)=>{
+  this.urlErr(EO.target.value)
+  this.setState({url:EO.target.value})
+ }
+
+ urlErr= (err) => {
+  if(err===""){
+    this.setState({urlErr:"Введите url продукта "})
+    console.log("Ошибка")
+    }
+    else
+    this.setState({urlErr:""})
+}
+
+ changeBalance =(EO)=>{
+  this.balanceErr(EO.target.value)
+  this.setState({balance:EO.target.value})
+ }
+
+  balanceErr= (err) => {
+    if(err===""){
+      this.setState({balanceErr:"Введите остаток продукта "})
+      console.log("Ошибка")
+      }
+      else
+      this.setState({balanceErr:""})
+}
+
     render() {
       console.log(this.state.product)
+      console.log(this.state.price)
       return (
        
           <div>
@@ -35,16 +90,29 @@ class Card extends React.Component{
                   <span>ID: {this.props.id}</span> <br></br>
 
                   <label >Name:</label>
-                 <input type="text"  defaultValue={this.props.product}    onChange={this.changeName}/> <br></br>
-
+                 <input type="text" onChange={this.changeName}  value={this.state.product}/>  {this.state.productErr
+                ?      <span > {this.state.productErr} </span> 
+                    : ""
+                } <br></br>
+                
                  <label >Price:</label>
-                 <input type="text"   defaultValue={this.props.price} /> <br></br>
+                 <input type="text"  onChange={this.changePrice}  value={this.state.price} />  {this.state.priceErr
+                ?      <span > {this.state.priceErr}</span> 
+                    : ""
+                }<br></br>
 
                  <label >URL: </label>
-                 <input type="text"   defaultValue={this.props.url} /> <br></br>
+                 <input type="text"  onChange={this.changeUrl} value={this.state.url} /> {this.state.urlErr
+                ?      <span > {this.state.urlErr}</span> 
+                    : ""
+                } <br></br>
 
                  <label >Quanity: </label>
-                 <input type="text"   defaultValue={this.props.balance} /> <br></br>
+                 <input type="text" onChange={this.changeBalance}  value={this.state.balance} /> {this.state.balanceErr
+                ?      <span > {this.state.balanceErr}</span> 
+                    : ""
+                }<br></br>
+                 <input type="button"   defaultValue="Save" /> <input type="button" value="Cancel"/>
                     </div>
                     : ""
                 }
