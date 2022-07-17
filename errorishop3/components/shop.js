@@ -3,7 +3,6 @@ import React from 'react'
 import './shop.css'
 import  Product from './product'
 import  Card from "./Card.js"
-import  Edit from "./Edit.js"
 class Shop extends React.Component{
   static propTypes = {
     shop: React.PropTypes.string,
@@ -29,10 +28,24 @@ class Shop extends React.Component{
   price:"",
   url:"",
   balance:"",
-  workMode:"",
-  code: ""
+  workMode:"default",
+  code: "",
+  reduction: false,
+  inputSave:false,
+ 
+
   }
   
+  cbReduction=(boolean)=>{
+    this.setState({reduction:boolean})
+    console.log("изменилоcь булевое")
+  }
+  cbinputSave=(boolean)=>{
+    this.setState({inputSave:boolean})
+    console.log("изменилоcь булевое")
+  }
+
+
  cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{
   this.setState({newSelectedItem:codeSelectedItem})
   this.setState({productName:productName})
@@ -59,10 +72,10 @@ console.log(newItemList)
 
 
 render(){
+  console.log(this.state.reduction)
+  
 let shop=this.props.shop
-console.log(this.state.productName)
-console.log(this.state.newSelectedItem)
-console.log(this.state.itemList)
+
 console.log(this.state.price)
   let data=this.props.dataItems
 var dataArray=[]
@@ -78,14 +91,15 @@ data.forEach((element,index) => {
       <tr>{dataArray}</tr>
       {this.state.itemList.map(
         elem => <Product  key={elem.code}  code={elem.code} productName={elem.productName} price={elem.price} url={elem.url} balance={elem.balance}
-         cbEdit={this.cbEditItem} selectedItem={this.state.newSelectedItem} cbSelected={this.cbSelectedItem}  cbDeleted={this.deleteItem} workMode={this.state.workMode} />
+         cbEdit={this.cbEditItem} selectedItem={this.state.newSelectedItem} 
+         cbSelected={this.cbSelectedItem}  cbDeleted={this.deleteItem} workMode={this.state.workMode} inputState={this.state.reduction}  />
       )
       }
     </tbody>
  </table> 
- <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} price={this.state.price} workMode={this.state.workMode} balance={this.state.balance}></Card>
- <Edit >
- </Edit>
+ <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} 
+ price={this.state.price} workMode={this.state.workMode} balance={this.state.balance} reduction={this.cbReduction} inputSaveState={this.cbinputSave} inputSave={this.state.inputSave}> </Card>
+ 
  </div>
  
 

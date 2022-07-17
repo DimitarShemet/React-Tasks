@@ -35,7 +35,7 @@ class Product extends React.Component{
       <td>{this.props.price}</td>
       <td>{this.props.url}</td>
       <td>{this.props.balance}</td>
-      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked}  ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset}></input></td>
+      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked} disabled={this.props.inputState} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset} disabled={this.props.inputState}></input></td>
     </tr>
   
 
