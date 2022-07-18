@@ -65,7 +65,7 @@ class Shop extends React.Component{
   }
 
 
- cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{
+ cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{ // Доброе утро, Алексей, вот в этом методе я могу поменять фон, если режим редактирования включен, но как здесь мне проверить, что сделаны изменения в инпуте? 
   if(this.state.workMode==2 ){
     return 
   }
