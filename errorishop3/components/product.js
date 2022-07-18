@@ -1,11 +1,17 @@
 
 import React from 'react'
 class Product extends React.Component{
-     
+         
+  state = {
+   productName:this.props.productName,
+   price: this.props.price,
+   url:this.props.url,
+   balance:this.props.balance,
+    }
   
     productClicked=(EO)=>{
       EO.stopPropagation()
-     this.props.cbSelected(this.props.code, this.props.productName,this.props.price,1)
+     this.props.cbSelected(this.props.code, this.state.productName,this.state.price,1)
      return{
       
      }
@@ -13,9 +19,6 @@ class Product extends React.Component{
   EditClicked=(EO)=>{
     EO.stopPropagation()
     this.props.cbEdit(this.props.code, this.props.productName,this.props.price,this.props.url,this.props.balance,2)
-    return{
-     
-    }
  }
     clickReset=(EO)=>{
       EO.stopPropagation()
@@ -31,11 +34,11 @@ class Product extends React.Component{
     }
     render(){  
     return <tr onClick={this.productClicked} style={{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}>
-      <td>{this.props.productName}</td>
-      <td>{this.props.price}</td>
-      <td>{this.props.url}</td>
-      <td>{this.props.balance}</td>
-      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked} disabled={this.props.inputState} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset} disabled={this.props.inputState}></input></td>
+      <td>{this.state.productName}</td>
+      <td>{this.state.price}</td>
+      <td>{this.state.url}</td>
+      <td>{this.state.balance}</td>
+      <td><input type={"button"} value={"Edit"} onClick={this.EditClicked} disabled={this.props.inputState} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset} disabled={this.props.inputState|| this.props.workMode==2}></input></td>
     </tr>
   
 

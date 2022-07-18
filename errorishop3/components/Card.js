@@ -12,10 +12,12 @@ class Card extends React.Component{
     productErr: "",
     priceErr: "",
     urlErr: "",
-    balanceErr: ""
+    balanceErr: "",
+    workMode:this.props.workMode
     }
 
  changeName =(EO)=>{
+  // EO.target.value!==this.props.product 
   this.props.reduction(true)
   this.nameErr(EO.target.value)
   this.setState({product:EO.target.value})
@@ -24,12 +26,12 @@ class Card extends React.Component{
 
  nameErr= (err) => {
   if(err===""){
-    this.props.inputSaveState(true)
+     this.props.cbProductErr(true)
   this.setState({productErr:"Введите название продукта "})
   console.log("Ошибка")
   }
   else{
-    this.props.inputSaveState(false)
+    this.props.cbProductErr(false)
   this.setState({productErr:""})
   }
 }
@@ -41,13 +43,13 @@ class Card extends React.Component{
 
  priceErr= (err) => {
   if(err===""){
-    this.props.inputSaveState(true)
+    this.props.cbPriceErr(true)
     this.setState({priceErr:"Введите цену продукта "})
     console.log("Ошибка")
     }
     else{
+      this.props.cbPriceErr(false)
     this.setState({priceErr:""})
-    this.props.inputSaveState(false)
     }
 }
 
@@ -59,13 +61,13 @@ class Card extends React.Component{
 
  urlErr= (err) => {
   if(err===""){
-    this.props.inputSaveState(true)
+    this.props.cbUrlErr(true)
     this.setState({urlErr:"Введите url продукта "})
     console.log("Ошибка")
     }
     else{
+      this.props.cbUrlErr(false)
     this.setState({urlErr:""})
-    this.props.inputSaveState(false)
     }
 }
 
@@ -77,15 +79,21 @@ class Card extends React.Component{
 
   balanceErr= (err) => {
     if(err===""){
-      this.props.inputSaveState(true)
+      this.props.cbBalanceErr(true)
       this.setState({balanceErr:"Введите остаток продукта "})
       console.log("Ошибка")
       }
       else{
-     this.props.inputSaveState(false)
+        this.props.cbBalanceErr(false)
       this.setState({balanceErr:""})
       }
 }
+newProductClicked=(EO)=>{
+  this.props.workModeChange(3)
+}
+
+
+
   
     render() {
       console.log(this.state.product)
@@ -96,23 +104,21 @@ class Card extends React.Component{
 
              {this.props.workMode==="default"?
                   <div>
-                  <input type="button" value="New product"></input>
+                   <input type="button" value="New product" onClick={this.newProductClicked} ></input>  
                     </div>  
                     : ""
                 }
-            {this.props.workMode===1
+            {this.props.workMode===1  // 1-показ карточки 
                 ?  <div className='MyComponent__Card'>
                   <span className='MyComponent__Card__title'> {this.props.product}</span> <br></br>
                     <span>{"Название товара: "+this.props.product}</span><br></br>
                     <span>{"Цена товара: "+this.props.price}</span> <br></br>
-                    <div>
-                 <input type="button" value="New product"></input>
-                   </div>
+                    <input type="button" value="New product" onClick={this.newProductClicked} ></input>  
                     </div>
                     
                     : ""
                 }
-            {this.props.workMode===2
+            {this.props.workMode===2  // 2- редактирование карточки 
                 ?  <div className='MyComponent__Card'>
                   <span>ID: {this.props.id}</span> <br></br>
 
@@ -139,11 +145,45 @@ class Card extends React.Component{
                 ?      <span  style={{color: "red"}}> {this.state.balanceErr}</span> 
                     : ""
                 }<br></br>
-                 <input type="button"   defaultValue="Save" disabled={this.props.inputSave}/> <input type="button" value="Cancel" />
+                 <input type="button"   defaultValue="Save"  disabled={(this.props.productErr==true||this.props.priceErr==true||this.props.urlErr==true|| this.props.balanceErr==true)? true:false}/>
+                  <input type="button" value="Cancel" />
                     </div>
                     : ""
                 }
-          
+                
+                {this.props.workMode===3  // 3 - карточка нового продукта  
+                ?  <div className='MyComponent__Card'>
+                  <span> Add new Product</span> <br></br>
+                  <span>ID: {this.props.id}</span> <br></br>
+                  <label>Name:</label>
+                 <input type="text" onChange={this.changeName}  value={this.state.product}/>  {this.state.productErr
+                ?      <span style={{color: "red"}} > {this.state.productErr} </span> 
+                    : ""
+                } <br></br>
+                
+                 <label>Price:</label>
+                 <input type="text"  onChange={this.changePrice}  value={this.state.price} />  {this.state.priceErr
+                ?      <span  style={{color: "red"}}> {this.state.priceErr}</span> 
+                    : ""
+                }<br></br>
+
+                 <label >URL: </label>
+                 <input type="text"  onChange={this.changeUrl} value={this.state.url} /> {this.state.urlErr
+                ?      <span style={{color: "red"}}> {this.state.urlErr}</span> 
+                    : ""
+                } <br></br>
+
+                 <label >Quanity: </label>
+                 <input type="text" onChange={this.changeBalance}  value={this.state.balance} /> {this.state.balanceErr
+                ?      <span  style={{color: "red"}}> {this.state.balanceErr}</span> 
+                    : ""
+                }<br></br>
+                 <input type="button"   defaultValue="Save" disabled={(this.props.productErr==true||this.props.priceErr==true||this.props.urlErr==true|| this.props.balanceErr==true)? true:false}/>
+                  <input type="button" value="Cancel" />
+                    </div>
+                    : ""
+                }
+         
           </div>
       );
       

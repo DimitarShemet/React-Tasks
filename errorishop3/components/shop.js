@@ -32,10 +32,29 @@ class Shop extends React.Component{
   code: "",
   reduction: false,
   inputSave:false,
- 
-
+  productErr:false,
+  priceErr:false,
+  urlErr:false,
+  balanceErr:false
   }
-  
+
+  cbProductErr=(boolean)=>{
+    this.setState({productErr:boolean})
+    console.log("изменилоcь булевое")
+  }
+  cbPriceErr=(boolean)=>{
+    this.setState({priceErr:boolean})
+    console.log("изменилоcь булевое")
+  }
+  cbUrlErr=(boolean)=>{
+    this.setState({urlErr:boolean})
+    console.log("изменилоcь булевое")
+  }
+  cbBalanceErr=(boolean)=>{
+    this.setState({balanceErr:boolean})
+    console.log("изменилоcь булевое")
+  }
+
   cbReduction=(boolean)=>{
     this.setState({reduction:boolean})
     console.log("изменилоcь булевое")
@@ -47,6 +66,9 @@ class Shop extends React.Component{
 
 
  cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{
+  if(this.state.workMode==2 ){
+    return 
+  }
   this.setState({newSelectedItem:codeSelectedItem})
   this.setState({productName:productName})
   this.setState({price:price})
@@ -68,6 +90,9 @@ this.setState({itemList:newItemList})
 console.log(newItemList)
 }
 
+cbWorkModeChange=(number)=>{
+  this.setState({workMode:number})
+  }
 
 
 
@@ -97,8 +122,10 @@ data.forEach((element,index) => {
       }
     </tbody>
  </table> 
- <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} 
- price={this.state.price} workMode={this.state.workMode} balance={this.state.balance} reduction={this.cbReduction} inputSaveState={this.cbinputSave} inputSave={this.state.inputSave}> </Card>
+ <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} productErr={this.state.productErr} cbProductErr={this.cbProductErr}
+ priceErr={this.state.priceErr} cbPriceErr={this.cbPriceErr} urlErr={this.state.urlErr}  cbUrlErr={this.cbUrlErr} balanceErr={this.state.balanceErr} cbBalanceErr={this.cbBalanceErr}
+ price={this.state.price} workMode={this.state.workMode} workModeChange={this.cbWorkModeChange} balance={this.state.balance} reduction={this.cbReduction}  cbSelected={this.cbSelectedItem}   cbEdit={this.cbEditItem} >
+   </Card>
  
  </div>
  
