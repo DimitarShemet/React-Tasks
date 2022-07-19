@@ -65,8 +65,8 @@ class Shop extends React.Component{
   }
 
 
- cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{ // Доброе утро, Алексей, вот в этом методе я могу поменять фон, если режим редактирования включен, но как здесь мне проверить, что сделаны изменения в инпуте? 
-  if(this.state.workMode==2 ){
+ cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{ 
+  if(this.state.reduction===true ){
     return 
   }
   this.setState({newSelectedItem:codeSelectedItem})
@@ -74,7 +74,7 @@ class Shop extends React.Component{
   this.setState({price:price})
   this.setState({workMode:workMode})
  }
- cbEditItem=(code,productName,price,url,balance,workMode)=>{
+ cbEditItem=(code,productName,price,url,balance,workMode)=>{          // Данный метод  даёт компоненту  Card значения в value input 
   this.setState({code:code})
   this.setState({productName:productName})
   this.setState({price:price})
@@ -82,7 +82,13 @@ class Shop extends React.Component{
   this.setState({balance:balance})
   this.setState({workMode:workMode})
  }
-
+ cbChangeArr=(newproductName,newprice,newurl,newbalance,newworkMode)=>{          // Данный метод работает по кнопке save 
+  this.setState({productName:newproductName})
+  this.setState({price:newprice})
+  this.setState({url:newurl})
+  this.setState({balance:newbalance})
+  this.setState({workMode:newworkMode})
+ }
 
 deleteItem=(itemСode)=>{
 let newItemList=this.state.itemList.filter(element=>element.code!==itemСode)
@@ -97,7 +103,7 @@ cbWorkModeChange=(number)=>{
 
 
 render(){
-  console.log(this.state.reduction)
+  console.log(this.state.productName)
   
 let shop=this.props.shop
 
@@ -124,7 +130,9 @@ data.forEach((element,index) => {
  </table> 
  <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} productErr={this.state.productErr} cbProductErr={this.cbProductErr}
  priceErr={this.state.priceErr} cbPriceErr={this.cbPriceErr} urlErr={this.state.urlErr}  cbUrlErr={this.cbUrlErr} balanceErr={this.state.balanceErr} cbBalanceErr={this.cbBalanceErr}
- price={this.state.price} workMode={this.state.workMode} workModeChange={this.cbWorkModeChange} balance={this.state.balance} reduction={this.cbReduction}  cbSelected={this.cbSelectedItem}   cbEdit={this.cbEditItem} >
+ price={this.state.price} workMode={this.state.workMode} workModeChange={this.cbWorkModeChange} balance={this.state.balance} reduction={this.cbReduction}  cbSelected={this.cbSelectedItem}   cbEdit={this.cbEditItem}
+  cbChangeArr={this.cbChangeArr}>
+
    </Card>
  
  </div>

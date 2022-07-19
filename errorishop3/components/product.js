@@ -7,6 +7,7 @@ class Product extends React.Component{
    price: this.props.price,
    url:this.props.url,
    balance:this.props.balance,
+ 
     }
   
     productClicked=(EO)=>{
@@ -16,7 +17,7 @@ class Product extends React.Component{
       
      }
   }
-  EditClicked=(EO)=>{
+  EditClicked=(EO)=>{                  // Данный метод даёт значения value компоненту Card
     EO.stopPropagation()
     this.props.cbEdit(this.props.code, this.props.productName,this.props.price,this.props.url,this.props.balance,2)
  }
@@ -33,11 +34,12 @@ class Product extends React.Component{
      
     }
     render(){  
+      console.log(this.props.productName)
     return <tr onClick={this.productClicked} style={{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}>
-      <td>{this.state.productName}</td>
-      <td>{this.state.price}</td>
-      <td>{this.state.url}</td>
-      <td>{this.state.balance}</td>
+      <td>{this.props.productName}</td>
+      <td>{ this.props.price}</td>
+      <td>{this.props.url}</td>
+      <td>{this.props.balance}</td>
       <td><input type={"button"} value={"Edit"} onClick={this.EditClicked} disabled={this.props.inputState} ></input> <input type={"reset"} value={"Delete"}  onClick={this.clickReset} disabled={this.props.inputState|| this.props.workMode==2}></input></td>
     </tr>
   

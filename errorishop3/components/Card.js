@@ -13,15 +13,17 @@ class Card extends React.Component{
     priceErr: "",
     urlErr: "",
     balanceErr: "",
-    workMode:this.props.workMode
+    workMode:this.props.workMode,
     }
-
+   cbNewArr=()=>{         // Передает новые значения по кнопке "Save"
+   this.props.cbChangeArr(this.state.product,this.state.price,this.state.url,this.state.balance,1) 
+   this.props.reduction(false)                    // Включает клики
+   }
  changeName =(EO)=>{
   // EO.target.value!==this.props.product 
   this.props.reduction(true)
   this.nameErr(EO.target.value)
   this.setState({product:EO.target.value})
- 
  }
 
  nameErr= (err) => {
@@ -145,7 +147,7 @@ newProductClicked=(EO)=>{
                 ?      <span  style={{color: "red"}}> {this.state.balanceErr}</span> 
                     : ""
                 }<br></br>
-                 <input type="button"   defaultValue="Save"  disabled={(this.props.productErr==true||this.props.priceErr==true||this.props.urlErr==true|| this.props.balanceErr==true)? true:false}/>
+                 <input type="button"   defaultValue="Save" onClick={this.cbNewArr}  disabled={(this.props.productErr==true||this.props.priceErr==true||this.props.urlErr==true|| this.props.balanceErr==true)? true:false}/>
                   <input type="button" value="Cancel" />
                     </div>
                     : ""
