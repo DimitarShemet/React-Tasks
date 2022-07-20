@@ -40,28 +40,28 @@ class Shop extends React.Component{
 
   cbProductErr=(boolean)=>{
     this.setState({productErr:boolean})
-    console.log("изменилоcь булевое")
+  
   }
   cbPriceErr=(boolean)=>{
     this.setState({priceErr:boolean})
-    console.log("изменилоcь булевое")
+    
   }
   cbUrlErr=(boolean)=>{
     this.setState({urlErr:boolean})
-    console.log("изменилоcь булевое")
+ 
   }
   cbBalanceErr=(boolean)=>{
     this.setState({balanceErr:boolean})
-    console.log("изменилоcь булевое")
+   
   }
 
   cbReduction=(boolean)=>{
     this.setState({reduction:boolean})
-    console.log("изменилоcь булевое")
+ 
   }
   cbinputSave=(boolean)=>{
     this.setState({inputSave:boolean})
-    console.log("изменилоcь булевое")
+   
   }
 
 
@@ -73,6 +73,7 @@ class Shop extends React.Component{
   this.setState({productName:productName})
   this.setState({price:price})
   this.setState({workMode:workMode})
+
  }
  cbEditItem=(code,productName,price,url,balance,workMode)=>{          // Данный метод  даёт компоненту  Card значения в value input 
   this.setState({code:code})
@@ -82,18 +83,32 @@ class Shop extends React.Component{
   this.setState({balance:balance})
   this.setState({workMode:workMode})
  }
- cbChangeArr=(newproductName,newprice,newurl,newbalance,newworkMode)=>{          // Данный метод работает по кнопке save 
-  this.setState({productName:newproductName})
-  this.setState({price:newprice})
-  this.setState({url:newurl})
-  this.setState({balance:newbalance})
-  this.setState({workMode:newworkMode})
+ cbChangeArr=(id,newproductName,newprice,newurl,newbalance,newworkMode)=>{          // Данный метод работает по кнопке save 
+  let editProduct = {
+    productName: newproductName,
+    price: newprice,
+    url:newurl,
+    balance:newbalance,
+    code:id 
+}
+ let newArr = this.state.itemList.map((elem) => elem.code == editProduct.code ? editProduct : elem);
+ this.setState({workMode:newworkMode})
+ this.setState({itemList:newArr})
+ this.setState({reduction:false})
+ this.setState({productName:newproductName})
+ this.setState({price:newprice})
+ this.setState({url:newurl})
+ this.setState({balance:newbalance})
+ this.setState({workMode:newworkMode})
+
+ 
+ 
  }
 
 deleteItem=(itemСode)=>{
 let newItemList=this.state.itemList.filter(element=>element.code!==itemСode)
 this.setState({itemList:newItemList})
-console.log(newItemList)
+
 }
 
 cbWorkModeChange=(number)=>{
@@ -103,11 +118,11 @@ cbWorkModeChange=(number)=>{
 
 
 render(){
-  console.log(this.state.productName)
+ 
   
 let shop=this.props.shop
 
-console.log(this.state.price)
+
   let data=this.props.dataItems
 var dataArray=[]
 data.forEach((element,index) => {

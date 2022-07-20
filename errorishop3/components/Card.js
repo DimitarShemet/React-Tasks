@@ -4,7 +4,7 @@ import './Card.css'
 class Card extends React.Component{
      
   state = {
-    id:this.props.code,
+    id:this.props.id,
     product:this.props.product,
     price:this.props.price,
     url:this.props.url,
@@ -15,12 +15,13 @@ class Card extends React.Component{
     balanceErr: "",
     workMode:this.props.workMode,
     }
-   cbNewArr=()=>{         // Передает новые значения по кнопке "Save"
-   this.props.cbChangeArr(this.state.product,this.state.price,this.state.url,this.state.balance,1) 
+   cbNewArr=()=>{       
+   // Передает новые значения по кнопке "Save"
+   this.props.cbChangeArr(this.state.id,this.state.product,this.state.price,this.state.url,this.state.balance,1) 
    this.props.reduction(false)                    // Включает клики
    }
  changeName =(EO)=>{
-  // EO.target.value!==this.props.product 
+ 
   this.props.reduction(true)
   this.nameErr(EO.target.value)
   this.setState({product:EO.target.value})
@@ -30,7 +31,7 @@ class Card extends React.Component{
   if(err===""){
      this.props.cbProductErr(true)
   this.setState({productErr:"Введите название продукта "})
-  console.log("Ошибка")
+
   }
   else{
     this.props.cbProductErr(false)
@@ -47,7 +48,7 @@ class Card extends React.Component{
   if(err===""){
     this.props.cbPriceErr(true)
     this.setState({priceErr:"Введите цену продукта "})
-    console.log("Ошибка")
+   
     }
     else{
       this.props.cbPriceErr(false)
@@ -65,7 +66,7 @@ class Card extends React.Component{
   if(err===""){
     this.props.cbUrlErr(true)
     this.setState({urlErr:"Введите url продукта "})
-    console.log("Ошибка")
+  
     }
     else{
       this.props.cbUrlErr(false)
@@ -99,7 +100,7 @@ newProductClicked=(EO)=>{
   
     render() {
       console.log(this.state.product)
-      console.log(this.state.price)
+    
       return (
        
           <div>

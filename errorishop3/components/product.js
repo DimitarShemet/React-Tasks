@@ -7,12 +7,14 @@ class Product extends React.Component{
    price: this.props.price,
    url:this.props.url,
    balance:this.props.balance,
+   selectedItem:this.props.selectedItem,
+   code: this.props.code,
  
     }
   
     productClicked=(EO)=>{
       EO.stopPropagation()
-     this.props.cbSelected(this.props.code, this.state.productName,this.state.price,1)
+     this.props.cbSelected(this.props.code, this.props.productName,this.props.price,1)
      return{
       
      }
