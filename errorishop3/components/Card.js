@@ -14,6 +14,11 @@ class Card extends React.Component{
     urlErr: "",
     balanceErr: "",
     workMode:this.props.workMode,
+    newProduct:"",
+    newPrice:"",
+    newUrl:"",
+    newBalance:"",
+    newId:15,
     }
    cbNewArr=()=>{       
    // Передает новые значения по кнопке "Save"
@@ -26,6 +31,11 @@ class Card extends React.Component{
   this.nameErr(EO.target.value)
   this.setState({product:EO.target.value})
  }
+ changeNameNew =(EO)=>{
+  this.setState({newProduct:EO.target.value})
+ }
+ 
+
 
  nameErr= (err) => {
   if(err===""){
@@ -43,6 +53,10 @@ class Card extends React.Component{
   this.priceErr(EO.target.value)
   this.setState({price:EO.target.value})
  }
+ changePriceNew =(EO)=>{
+  this.setState({newPrice:EO.target.value})
+ }
+ 
 
  priceErr= (err) => {
   if(err===""){
@@ -60,6 +74,9 @@ class Card extends React.Component{
   this.props.reduction(true)
   this.urlErr(EO.target.value)
   this.setState({url:EO.target.value})
+ }
+ changeUrlNew =(EO)=>{
+  this.setState({newUrl:EO.target.value})
  }
 
  urlErr= (err) => {
@@ -79,6 +96,9 @@ class Card extends React.Component{
   this.balanceErr(EO.target.value)
   this.setState({balance:EO.target.value})
  }
+ changeBalanceNew =(EO)=>{
+  this.setState({newBalance:EO.target.value})
+ }
 
   balanceErr= (err) => {
     if(err===""){
@@ -93,9 +113,21 @@ class Card extends React.Component{
 }
 newProductClicked=(EO)=>{
   this.props.workModeChange(3)
+  this.setState({newProduct:"",newPrice:"",newUrl:"",  newBalance:"",workMode:3})
+  this.props.reduction(true)
+  
 }
-
-
+cancelInputClicked=(EO)=>{
+  this.props.workModeChange(1)
+  this.props.reduction(false)  
+}
+cancelInputNewProduct=(EO)=>{
+  this.props.workModeChange("default")
+  this.props.reduction(false)  
+}
+cbNewProductArr=()=>{
+  this.props.cbNewArr(this.state.newId,this.state.newProduct,this.state.newPrice, this.state.newUrl,this.state.newBalance,"default")
+}
 
   
     render() {
@@ -149,7 +181,7 @@ newProductClicked=(EO)=>{
                     : ""
                 }<br></br>
                  <input type="button"   defaultValue="Save" onClick={this.cbNewArr}  disabled={(this.props.productErr==true||this.props.priceErr==true||this.props.urlErr==true|| this.props.balanceErr==true)? true:false}/>
-                  <input type="button" value="Cancel" />
+                  <input type="button" value="Cancel" onClick={this.cancelInputClicked}/>
                     </div>
                     : ""
                 }
@@ -157,32 +189,32 @@ newProductClicked=(EO)=>{
                 {this.props.workMode===3  // 3 - карточка нового продукта  
                 ?  <div className='MyComponent__Card'>
                   <span> Add new Product</span> <br></br>
-                  <span>ID: {this.props.id}</span> <br></br>
+                  <span>ID: { this.state.newId++}</span> <br></br>
                   <label>Name:</label>
-                 <input type="text" onChange={this.changeName}  value={this.state.product}/>  {this.state.productErr
-                ?      <span style={{color: "red"}} > {this.state.productErr} </span> 
+                 <input type="text" onChange={this.changeNameNew}  value={this.state.newProduct}/>  {!this.state.newProduct
+                ?      <span style={{color: "red"}} > Введите имя продукта </span> 
                     : ""
                 } <br></br>
                 
                  <label>Price:</label>
-                 <input type="text"  onChange={this.changePrice}  value={this.state.price} />  {this.state.priceErr
-                ?      <span  style={{color: "red"}}> {this.state.priceErr}</span> 
+                 <input type="text"  onChange={this.changePriceNew}  value={this.state.newPrice} />  {!this.state.newPrice
+                ?      <span  style={{color: "red"}}> Введите цену продукта  </span> 
                     : ""
                 }<br></br>
 
                  <label >URL: </label>
-                 <input type="text"  onChange={this.changeUrl} value={this.state.url} /> {this.state.urlErr
-                ?      <span style={{color: "red"}}> {this.state.urlErr}</span> 
+                 <input type="text"  onChange={this.changeUrlNew } value={this.state.newUrl} /> {!this.state.newUrl
+                ?      <span style={{color: "red"}}> Введите url продукта</span> 
                     : ""
                 } <br></br>
 
                  <label >Quanity: </label>
-                 <input type="text" onChange={this.changeBalance}  value={this.state.balance} /> {this.state.balanceErr
-                ?      <span  style={{color: "red"}}> {this.state.balanceErr}</span> 
+                 <input type="text" onChange={this. changeBalanceNew }  value={this.state.newBalance} /> {!this.state.newBalance
+                ?      <span  style={{color: "red"}}> Введите остаток продукта</span> 
                     : ""
                 }<br></br>
-                 <input type="button"   defaultValue="Save" disabled={(this.props.productErr==true||this.props.priceErr==true||this.props.urlErr==true|| this.props.balanceErr==true)? true:false}/>
-                  <input type="button" value="Cancel" />
+                 <input type="button"   defaultValue="Save" onClick={this.cbNewProductArr}  disabled={(this.state.newProduct==""||this.state.newPrice==""||this.state.newUrl==""|| this.state.newBalance=="")? true:false}/>
+                  <input type="button" value="Cancel" onClick={this.cancelInputNewProduct} />
                     </div>
                     : ""
                 }

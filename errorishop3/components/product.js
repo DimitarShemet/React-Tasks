@@ -22,6 +22,7 @@ class Product extends React.Component{
   EditClicked=(EO)=>{                  // Данный метод даёт значения value компоненту Card
     EO.stopPropagation()
     this.props.cbEdit(this.props.code, this.props.productName,this.props.price,this.props.url,this.props.balance,2)
+    this.props.cbSelected(this.props.code, this.props.productName,this.props.price,2)
  }
     clickReset=(EO)=>{
       EO.stopPropagation()
@@ -37,7 +38,7 @@ class Product extends React.Component{
     }
     render(){  
       console.log(this.props.productName)
-    return <tr onClick={this.productClicked} style={{backgroundColor:(this.props.selectedItem===this.props.code)?'orange':'white'}}>
+    return <tr onClick={this.productClicked} style={{backgroundColor:(this.props.selectedItem===this.props.code && this.props.workMode!==3 &&this.props.workMode!=="default" )?'orange':'white'}}>
       <td>{this.props.productName}</td>
       <td>{ this.props.price}</td>
       <td>{this.props.url}</td>

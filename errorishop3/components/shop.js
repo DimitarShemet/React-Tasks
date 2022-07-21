@@ -35,7 +35,12 @@ class Shop extends React.Component{
   productErr:false,
   priceErr:false,
   urlErr:false,
-  balanceErr:false
+  balanceErr:false,
+  newProduct:"",
+  newPrice:"",
+  newUrl:"",
+  newBalance:""
+ 
   }
 
   cbProductErr=(boolean)=>{
@@ -66,7 +71,7 @@ class Shop extends React.Component{
 
 
  cbSelectedItem =(codeSelectedItem,productName,price,workMode)=>{ 
-  if(this.state.reduction===true ){
+  if(this.state.reduction===true||this.state.workMode===3 ){
     return 
   }
   this.setState({newSelectedItem:codeSelectedItem})
@@ -100,14 +105,28 @@ class Shop extends React.Component{
  this.setState({url:newurl})
  this.setState({balance:newbalance})
  this.setState({workMode:newworkMode})
-
- 
- 
  }
+ cbNewArr=(id,newproductName,newprice,newurl,newbalance,newworkMode)=>{          // Данный метод работает по кнопке save 
+  let newProduct = {
+    productName: newproductName,
+    price: newprice,
+    url:newurl,
+    balance:newbalance,
+    code:id 
+}
+this.state.itemList.push(newProduct);
+ this.setState( {reduction:false, workMode:newworkMode})
+
+ }
+
+
+
+
 
 deleteItem=(itemСode)=>{
 let newItemList=this.state.itemList.filter(element=>element.code!==itemСode)
 this.setState({itemList:newItemList})
+this.cbWorkModeChange("default")
 
 }
 
@@ -118,7 +137,7 @@ cbWorkModeChange=(number)=>{
 
 
 render(){
- 
+ console.log(this.state.itemList)
   
 let shop=this.props.shop
 
@@ -146,7 +165,7 @@ data.forEach((element,index) => {
  <Card key={this.state.code} id={this.state.code} url={this.state.url} product={this.state.productName} productErr={this.state.productErr} cbProductErr={this.cbProductErr}
  priceErr={this.state.priceErr} cbPriceErr={this.cbPriceErr} urlErr={this.state.urlErr}  cbUrlErr={this.cbUrlErr} balanceErr={this.state.balanceErr} cbBalanceErr={this.cbBalanceErr}
  price={this.state.price} workMode={this.state.workMode} workModeChange={this.cbWorkModeChange} balance={this.state.balance} reduction={this.cbReduction}  cbSelected={this.cbSelectedItem}   cbEdit={this.cbEditItem}
-  cbChangeArr={this.cbChangeArr}>
+  cbChangeArr={this.cbChangeArr}  cbNewArr={this.cbNewArr}>
 
    </Card>
  
