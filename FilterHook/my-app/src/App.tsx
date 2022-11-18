@@ -1,8 +1,9 @@
+import React from "react";
 import "./App.css";
 import { Filter } from "./Filter";
 
 function App() {
-  let arrStrings = [
+  const arrStrings = [
     "california",
     "everything",
     "aboveboard",
