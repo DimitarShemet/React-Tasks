@@ -8,8 +8,10 @@ type ListProps = {
   checked: boolean;
 };
 export const List = ({ arr, filterString, checked }: ListProps) => {
-  let filterArr = arr.filter((elem: string) => elem.includes(filterString));
-  if (checked ? filterArr.sort() : filterArr)
+  let filterArr=arr.filter((elem: string) => elem.includes(filterString));
+  if (checked) {
+    filterArr.sort()
+  }
     return (
       <Fragment>
         <select size={arr.length / 2}>
